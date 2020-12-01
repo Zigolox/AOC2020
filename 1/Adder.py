@@ -1,3 +1,5 @@
+#Itertools had been a cleaner solution
+
 def add(number1, number2):
 	if number1 + number2 == 2020:
 			print(number1*number2)
