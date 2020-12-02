@@ -4,9 +4,7 @@ with open("input.txt", "r") as passwords:
 	for p in pw:
 		times, letter, string = p.split()
 		lower, upper = times.split("-")
-		letter, _ = letter.split(":")
-		print(letter)
-		count = string.count(letter)
+		count = string.count(letter[0])
 		if  int(lower) <= count <= int(upper):
 			correct += 1
 	print(correct)
