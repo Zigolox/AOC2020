@@ -1,7 +1,6 @@
 with open("input.txt", "r") as karta:
-	x = trees = 0
-	for line in karta:
-		if line.strip()[x] == '#':
+	trees = 0
+	for i, line in enumerate(karta):
+		if line.strip()[i * 3 % (len(line) - 1)] == '#':
 			trees += 1
-		x = (x + 3) % len(line.strip())
 	print(trees)
