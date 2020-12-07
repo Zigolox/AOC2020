@@ -6,7 +6,6 @@ with open("input.txt", "r") as form:
         for letter in g.strip():
             if letter != '\n':
                 d[letter] = 1
-        print(g,d,len(d))
         counts += len(d)
 
     print(counts)
