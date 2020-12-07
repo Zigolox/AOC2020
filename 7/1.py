@@ -15,8 +15,5 @@ with open("input.txt", "r") as bags:
         for i in range(len(a)//4):
             if a[i] != "no":
                 graph[a[i*4 + 1] + a[i*4 + 2]] += [(a[i*4], b[0] + b[1])]
-      #  for key in striped:
     seen = {}
     print(before(graph, seen, "shinygold") - 1)
-    #print(graph["shinygold"])
-    #print(graph)
