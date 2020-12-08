@@ -2,7 +2,6 @@ from collections import defaultdict
 
 def before(graph, seen, key):
     if key not in seen:
-        print(key,graph[key])
         seen[key] = 1
         return 1 + sum(before(graph, seen, i[1]) for i in graph[key])
     return 0

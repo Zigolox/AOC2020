@@ -1,9 +1,11 @@
 from collections import defaultdict
-
+# DAG that we can solve with DP of traversal
 def after(graph, seen, amount, key):
-    print(amount,graph[key])
+    if key in seen:
+        return seen[key]
     if len(graph[key]) != 0:
-        return amount + amount * sum(after(graph, seen, i[0], i[1]) for i in graph[key])
+        seen[key] = amount + amount * sum(after(graph, seen, i[0], i[1]) for i in graph[key])
+        return seen[key]
     return amount
 
 with open("input.txt", "r") as bags:
