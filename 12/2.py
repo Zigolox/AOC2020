@@ -1,21 +1,29 @@
 with open("input.txt", "r") as instructions:
-        directions = [(1,1),(1,-1),(-1,-1),(-1,1)]
-        d = w_n = w_e = 0
+        directions = [(1,1),(-1,1),(-1,-1),(1,-1)]
+        w = [1, 10]
+        d = 0
+        s = [0, 0]
         for i in instructions:
                 if i[0] == 'N':
-                        w_n += int(i[1:])
+                        w[0] += int(i[1:])
                 elif i[0] == 'S':
-                        w_n -= int(i[1:])
+                        w[0] -= int(i[1:])
                 elif i[0] == 'W':
-                        w_e -= int(i[1:])
+                        w[1] -= int(i[1:])
                 elif i[0] == 'E':
-                        w_e += int(i[1:])
+                        w[1] += int(i[1:])
                 elif i[0] == 'F':
-                        w_n += directions[d][0]*int(i[1:])
-                        w_e += directions[d][1]*int(i[1:])
+                        s[0] += w[0]*int(i[1:])
+                        s[1] += w[1]*int(i[1:])
                 elif i[0] == 'L':
-                        d = (d - (int(i[1:]) // 90)) % 4
+                        d = (-int(i[1:]) // 90) % 4
+                        p = w[:]
+                        w[0] = p[d % 2]*directions[d][0]
+                        w[1] = p[(d + 1)% 2]*directions[d][1]
                 else:
-                        d = (d + (int(i[1:]) // 90)) % 4
-                print(i[0],d,e,n)
-        print(abs(n) + abs(e))
+                        d = ((int(i[1:])) // 90) % 4
+                        p = w[:]
+                        w[0] = p[d % 2]*directions[d][0]
+                        w[1] = p[(d + 1)% 2]*directions[d][1]
+
+        print(abs(s[0]) + abs(s[1]))
